@@ -11,6 +11,10 @@ Color kolor(String hexColor) {
   return Color(int.parse(hexColor, radix: 16));
 }
 
+thatBlueColor() {
+  return kolor("#282860");
+}
+
 barkolor() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
     statusBarColor: Colors.white, //or set color with: Color(0xFF0000FF)

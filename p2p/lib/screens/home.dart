@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:p2p/utils/utils.dart';
+import 'package:p2p/widgets/drawerNavWidget.dart';
+import 'package:p2p/widgets/homeHeader.dart';
 
 class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  // Appbar
+
   @override
   Widget build(BuildContext context) {
+    barkolor(); // Barkolor can be found in Utils Class , it makes color of status bar White
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          "P2P",
-          style: TextStyle(
-            color: kolor("#283060"),
-          ),
-        ),
-      ),
+      drawer: drawerNav(context), // navigation Drawer Widget in Widgets Library
+      appBar: homeAppBar(),
       body: Center(
         child: Text("Ola!"),
       ),
