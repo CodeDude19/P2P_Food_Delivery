@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:p2p/screens/account.dart';
+import 'package:p2p/screens/favourites.dart';
+import 'package:p2p/screens/home.dart';
+import 'package:p2p/screens/orders.dart';
 import 'package:p2p/utils/utils.dart';
 
 navRowsText(x) {
@@ -13,8 +17,29 @@ navRowsText(x) {
   );
 }
 
-navRows(x, y) {
+navRows(x, y, context) {
+  StatefulWidget st;
+  switch (y) {
+    case "Home":
+      st = Home();
+      break;
+    case "Favourites":
+      st = Favourites();
+      break;
+    case "Orders":
+      st = Orders();
+      break;
+    case "Account":
+      st = Account();
+      break;
+  }
   return ListTile(
+    onTap: () {
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) {
+        return st;
+      }));
+    },
     leading: Icon(
       x,
       color: thatBlueColor(),
@@ -65,10 +90,10 @@ drawerNav(BuildContext context) {
             Column(
               children: <Widget>[
                 // Following Rows Display Text and Column
-                navRows(Icons.airplay, "Home"),
-                navRows(Icons.favorite, "Favourites"),
-                navRows(Icons.event_note, "Orders"),
-                navRows(Icons.person, "Account"),
+                navRows(Icons.airplay, "Home", context),
+                navRows(Icons.favorite, "Favourites", context),
+                navRows(Icons.event_note, "Orders", context),
+                navRows(Icons.person, "Account", context),
               ],
             ),
             Column(

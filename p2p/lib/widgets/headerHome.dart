@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:p2p/screens/search.dart';
 import 'package:p2p/utils/utils.dart';
 
-homeAppBar() {
+homeAppBar(BuildContext context) {
   return AppBar(
     titleSpacing: 0,
     iconTheme: new IconThemeData(
@@ -23,7 +24,10 @@ homeAppBar() {
             Icons.search,
           ),
           onPressed: () {
-            print("Search");
+            Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (context) {
+              return Search();
+            }));
           }),
     ],
   );
