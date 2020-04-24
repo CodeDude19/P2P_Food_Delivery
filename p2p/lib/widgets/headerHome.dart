@@ -4,7 +4,7 @@ import 'package:p2p/utils/utils.dart';
 
 homeAppBar(BuildContext context) {
   return AppBar(
-    // elevation: 0,
+    elevation: 0,
     titleSpacing: 0,
     iconTheme: new IconThemeData(
       color:
@@ -25,8 +25,7 @@ homeAppBar(BuildContext context) {
             Icons.search,
           ),
           onPressed: () {
-            Navigator.of(context)
-                .pushReplacement(MaterialPageRoute(builder: (context) {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
               return Search();
             }));
           }),

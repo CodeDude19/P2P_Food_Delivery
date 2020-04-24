@@ -3,6 +3,7 @@ import 'package:p2p/utils/utils.dart';
 
 headerGeneral(x) {
   return AppBar(
+    elevation: 0,
     centerTitle: true,
     titleSpacing: 0,
     title: Text(

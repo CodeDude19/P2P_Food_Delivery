@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:p2p/screens/address.dart';
 import 'package:p2p/screens/favourites.dart';
 import 'package:p2p/screens/orders.dart';
 import 'package:p2p/screens/profile.dart';
@@ -29,7 +30,7 @@ class _SearchState extends State<Account> {
         st = Profile();
         break;
       case "Address":
-        st = Account();
+        st = Address();
         break;
       case "Payment":
         st = Account();
@@ -37,8 +38,7 @@ class _SearchState extends State<Account> {
     }
     return ListTile(
       onTap: () {
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (context) {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return st;
         }));
       },

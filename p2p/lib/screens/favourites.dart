@@ -16,17 +16,7 @@ class _SearchState extends State<Favourites> {
         appBar: headerGeneral("Favourites"),
         drawer: drawerNav(context),
         body: ListView(
-          children: <Widget>[
-            TextField(
-              cursorColor: Colors.black,
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.go,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                  hintText: "Search..."),
-            ),
-          ],
+          children: <Widget>[],
         ));
   }
 }

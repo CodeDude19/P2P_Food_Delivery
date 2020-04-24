@@ -4,6 +4,7 @@ import 'package:p2p/screens/account.dart';
 import 'package:p2p/screens/favourites.dart';
 import 'package:p2p/screens/home.dart';
 import 'package:p2p/screens/orders.dart';
+import 'package:p2p/screens/productDetail.dart';
 import 'package:p2p/utils/utils.dart';
 
 navRowsText(x) {
@@ -28,7 +29,7 @@ navRows(x, y, context) {
       st = Favourites();
       break;
     case "Orders":
-      st = Orders();
+      st = ProductDetail();
       break;
     case "Account":
       st = Account();
@@ -36,8 +37,7 @@ navRows(x, y, context) {
   }
   return ListTile(
     onTap: () {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
         return st;
       }));
     },
