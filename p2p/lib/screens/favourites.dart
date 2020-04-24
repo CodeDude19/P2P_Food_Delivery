@@ -13,11 +13,20 @@ class _SearchState extends State<Favourites> {
   Widget build(BuildContext context) {
     barkolor();
     return Scaffold(
-      appBar: headerGeneral("Favourites"),
-      drawer: drawerNav(context),
-      body: Center(
-        child: Text("Ola!"),
-      ),
-    );
+        appBar: headerGeneral("Favourites"),
+        drawer: drawerNav(context),
+        body: ListView(
+          children: <Widget>[
+            TextField(
+              cursorColor: Colors.black,
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.go,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                  hintText: "Search..."),
+            ),
+          ],
+        ));
   }
 }

@@ -9,6 +9,16 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  List<String> categories = [
+    "North Indian",
+    "South Indian",
+    "Health Plus",
+    "Non Vegan",
+    "Vegan",
+    "Quick Bites"
+  ];
+  List<String> kolors = colorList();
+
   searchbar() {
     return Container(
       decoration: BoxDecoration(
@@ -19,10 +29,6 @@ class _SearchState extends State<Search> {
       padding: EdgeInsets.only(left: 10, right: 10),
       child: Row(
         children: <Widget>[
-          Icon(
-            Icons.search,
-            color: Colors.green,
-          ),
           Expanded(
             child: TextField(
               cursorColor: Colors.black,
@@ -34,8 +40,47 @@ class _SearchState extends State<Search> {
                   hintText: "Search..."),
             ),
           ),
+          IconButton(
+            color: Colors.green,
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
         ],
       ),
+    );
+  }
+
+  // colorCard(){
+  //   return COnta
+  // }
+
+  grid() {
+    return GridView.count(
+      crossAxisCount: 2,
+      padding: EdgeInsets.all(16),
+      crossAxisSpacing: 16,
+      mainAxisSpacing: 16,
+      physics: ScrollPhysics(),
+      shrinkWrap: true,
+      children: List.generate(categories.length, (index) {
+        return Container(
+          padding: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+              color: kolor(kolors[index]),
+              borderRadius: BorderRadius.circular(20)),
+          child: Center(
+            child: Text(
+              categories[index],
+              softWrap: true,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900),
+            ),
+          ),
+        );
+      }),
     );
   }
 
@@ -52,6 +97,7 @@ class _SearchState extends State<Search> {
             padding: EdgeInsets.only(top: 20, left: 20, right: 20),
             child: searchbar(),
           ),
+          grid(),
         ],
       ),
     );

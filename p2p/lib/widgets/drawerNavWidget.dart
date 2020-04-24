@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p/screens/account.dart';
 import 'package:p2p/screens/favourites.dart';
@@ -70,7 +71,7 @@ drawerNav(BuildContext context) {
                   child: Center(
                     child: CircleAvatar(
                       radius: 55,
-                      backgroundImage: NetworkImage(
+                      backgroundImage: CachedNetworkImageProvider(
                           "https://avatars0.githubusercontent.com/u/44332739?s=400&u=6548a3e31dda13a8d0601e67e1f2a837b04db5e1&v=4"),
                     ), // This is where the Profile image comes in !
                   ),
@@ -85,15 +86,12 @@ drawerNav(BuildContext context) {
                       fontSize: 25,
                       fontWeight: FontWeight.w500),
                 ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
+                SizedBox(height: 20),
                 // Following Rows Display Text and Column
                 navRows(Icons.airplay, "Home", context),
-                navRows(Icons.favorite, "Favourites", context),
+                navRows(Icons.favorite_border, "Favourites", context),
                 navRows(Icons.event_note, "Orders", context),
-                navRows(Icons.person, "Account", context),
+                navRows(Icons.person_outline, "Account", context),
               ],
             ),
             Column(
