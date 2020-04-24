@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p/screens/account.dart';
+import 'package:p2p/screens/cart.dart';
 import 'package:p2p/screens/favourites.dart';
 import 'package:p2p/screens/home.dart';
 import 'package:p2p/screens/orders.dart';
@@ -29,7 +30,7 @@ navRows(x, y, context) {
       st = Favourites();
       break;
     case "Orders":
-      st = ProductDetail();
+      st = Cart();
       break;
     case "Account":
       st = Account();
