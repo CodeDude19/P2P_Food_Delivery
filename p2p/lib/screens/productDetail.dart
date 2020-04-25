@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ProductDetailState extends State<ProductDetail> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: Icon(EvaIcons.arrowBackOutline),
               color: Colors.white,
               onPressed: () {
                 Navigator.pop(context);
@@ -24,7 +25,7 @@ class _ProductDetailState extends State<ProductDetail> {
               iconSize: 30,
             ),
             IconButton(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(EvaIcons.shoppingCartOutline),
               color: Colors.white,
               onPressed: () {},
               iconSize: 30,

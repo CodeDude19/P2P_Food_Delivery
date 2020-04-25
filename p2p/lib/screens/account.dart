@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:p2p/screens/address.dart';
 import 'package:p2p/screens/favourites.dart';
 import 'package:p2p/screens/orders.dart';
+import 'package:p2p/screens/productDetail.dart';
 import 'package:p2p/screens/profile.dart';
 import 'package:p2p/utils/utils.dart';
 import 'package:p2p/widgets/drawerNavWidget.dart';
@@ -34,7 +36,7 @@ class _SearchState extends State<Account> {
         st = Address();
         break;
       case "Payment":
-        st = Account();
+        st = ProductDetail();
         break;
     }
     return ListTile(
@@ -52,7 +54,10 @@ class _SearchState extends State<Account> {
         y,
         softWrap: true,
         style: TextStyle(
-            color: thatBlueColor(), fontSize: 18, fontWeight: FontWeight.w300),
+          color: thatBlueColor(),
+          fontSize: 18,
+          fontWeight: FontWeight.w300,
+        ),
       ),
     );
   }
@@ -61,7 +66,7 @@ class _SearchState extends State<Account> {
   Widget build(BuildContext context) {
     barkolor();
     return Scaffold(
-      backgroundColor: kolor("#F2F5FB"),
+      backgroundColor: kolor("#F0F1F0"),
       appBar: headerGeneral("Account"),
       drawer: drawerNav(context),
       body: ListView(
@@ -79,15 +84,13 @@ class _SearchState extends State<Account> {
                 ),
               ),
               SizedBox(height: 10),
-              Text(
-                "Yasser Arafat",
-                textAlign: TextAlign.center,
-                softWrap: true,
-                style: TextStyle(
-                    color: thatBlueColor(),
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500),
-              ),
+              Text("Yasser Arafat",
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  style: TextStyle(
+                      color: thatBlueColor(),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500))
             ],
           ),
           Container(
