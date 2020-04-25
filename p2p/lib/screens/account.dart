@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p/screens/address.dart';
 import 'package:p2p/screens/favourites.dart';
@@ -64,7 +65,7 @@ class _SearchState extends State<Account> {
       appBar: headerGeneral("Account"),
       drawer: drawerNav(context),
       body: ListView(
-        padding: EdgeInsets.only(top: 20, bottom: 20),
+        padding: EdgeInsets.only(top: 20, bottom: 100),
         children: <Widget>[
           Column(
             children: <Widget>[
@@ -98,9 +99,9 @@ class _SearchState extends State<Account> {
             margin: EdgeInsets.only(left: 10, right: 10, top: 20),
             child: Column(
               children: <Widget>[
-                navRows(Icons.favorite_border, "Favourites", context),
-                navRows(Icons.event_note, "Orders", context),
-                navRows(Icons.shopping_cart, "Cart", context),
+                navRows(EvaIcons.heartOutline, "Favourites", context),
+                navRows(EvaIcons.bellOutline, "Orders", context),
+                navRows(EvaIcons.shoppingCartOutline, "Cart", context),
               ],
             ),
           ),
@@ -113,9 +114,9 @@ class _SearchState extends State<Account> {
             margin: EdgeInsets.only(left: 10, right: 10, top: 10),
             child: Column(
               children: <Widget>[
-                navRows(Icons.person_add, "Profile Details", context),
-                navRows(Icons.location_city, "Address", context),
-                navRows(Icons.payment, "Payment", context),
+                navRows(EvaIcons.personAddOutline, "Profile Details", context),
+                navRows(EvaIcons.pinOutline, "Address", context),
+                navRows(EvaIcons.npmOutline, "Payment", context),
               ],
             ),
           )

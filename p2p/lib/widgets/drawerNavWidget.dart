@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p/screens/account.dart';
 import 'package:p2p/screens/cart.dart';
@@ -89,10 +90,10 @@ drawerNav(BuildContext context) {
                 ),
                 SizedBox(height: 20),
                 // Following Rows Display Text and Column
-                navRows(Icons.airplay, "Home", context),
-                navRows(Icons.favorite_border, "Favourites", context),
-                navRows(Icons.event_note, "Orders", context),
-                navRows(Icons.person_outline, "Account", context),
+                navRows(EvaIcons.homeOutline, "Home", context),
+                navRows(EvaIcons.heartOutline, "Favourites", context),
+                navRows(EvaIcons.bellOffOutline, "Orders", context),
+                navRows(EvaIcons.personOutline, "Account", context),
               ],
             ),
             Column(

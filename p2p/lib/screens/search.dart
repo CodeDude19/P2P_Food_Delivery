@@ -24,7 +24,6 @@ class _SearchState extends State<Search> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(50),
-        border: Border.all(width: 1, color: Colors.black12),
       ),
       padding: EdgeInsets.only(left: 10, right: 10),
       child: Row(
@@ -37,7 +36,7 @@ class _SearchState extends State<Search> {
               decoration: InputDecoration(
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                  hintText: "Search..."),
+                  hintText: "Search"),
             ),
           ),
           IconButton(
@@ -88,7 +87,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     barkolor();
     return Scaffold(
-      backgroundColor: kolor("#F2F5FB"),
+      backgroundColor: kolor("#E2E2E2"),
       drawer: drawerNav(context),
       appBar: headerGeneral("What to eat?"),
       body: ListView(
