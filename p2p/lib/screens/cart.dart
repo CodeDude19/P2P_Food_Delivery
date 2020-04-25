@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p/utils/utils.dart';
 import 'package:p2p/widgets/drawerNavWidget.dart';
@@ -46,12 +47,12 @@ class _SearchState extends State<Cart> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.black, width: 1)),
+                        color: Colors.black.withOpacity(0.05)),
                     child: Row(
                       children: <Widget>[
                         IconButton(
                             icon: Icon(
-                              Icons.arrow_downward,
+                              EvaIcons.arrowCircleDownOutline,
                               color: Colors.red,
                             ),
                             onPressed: () {}),
@@ -64,7 +65,7 @@ class _SearchState extends State<Cart> {
                         SizedBox(width: 10),
                         IconButton(
                           icon: Icon(
-                            Icons.arrow_upward,
+                            EvaIcons.arrowCircleUpOutline,
                             color: Colors.green,
                           ),
                           onPressed: () {},
@@ -90,7 +91,7 @@ class _SearchState extends State<Cart> {
   Widget build(BuildContext context) {
     barkolor();
     return Scaffold(
-      backgroundColor: Colors.white.withOpacity(0.85),
+      backgroundColor: kolor("F0F1F0"),
       appBar: headerGeneral("Cart"),
       drawer: drawerNav(context),
       body: Stack(
