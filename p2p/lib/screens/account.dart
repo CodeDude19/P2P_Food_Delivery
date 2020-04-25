@@ -3,6 +3,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:p2p/screens/address.dart';
+import 'package:p2p/screens/cart.dart';
 import 'package:p2p/screens/favourites.dart';
 import 'package:p2p/screens/orders.dart';
 import 'package:p2p/screens/productDetail.dart';
@@ -27,7 +28,7 @@ class _SearchState extends State<Account> {
         st = Orders();
         break;
       case "Cart":
-        st = Account();
+        st = Cart();
         break;
       case "Profile Details":
         st = Profile();

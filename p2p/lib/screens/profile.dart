@@ -27,7 +27,8 @@ class _SearchState extends State<Profile> {
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.go,
           decoration: InputDecoration(
-            hintText: x,
+            labelText: x,
+            hasFloatingPlaceholder: true,
             hintStyle: TextStyle(fontSize: 20),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 15),
@@ -59,7 +60,7 @@ class _SearchState extends State<Profile> {
   Widget build(BuildContext context) {
     barkolor();
     return Scaffold(
-      backgroundColor: kolor("#F2F5FB"),
+      backgroundColor: kolor("#F0F1F0"),
       appBar: headerGeneral("Profile"),
       drawer: drawerNav(context),
       body: ListView(

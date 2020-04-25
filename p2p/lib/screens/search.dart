@@ -74,7 +74,7 @@ class _SearchState extends State<Search> {
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontSize: 30,
-                  color: Colors.white,
+                  color: Colors.black54,
                   fontWeight: FontWeight.w900),
             ),
           ),
@@ -87,7 +87,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     barkolor();
     return Scaffold(
-      backgroundColor: kolor("#E2E2E2"),
+      backgroundColor: kolor("#F0F1F0"),
       drawer: drawerNav(context),
       appBar: headerGeneral("What to eat?"),
       body: ListView(

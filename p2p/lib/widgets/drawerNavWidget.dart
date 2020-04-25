@@ -62,7 +62,7 @@ drawerNav(BuildContext context) {
   return SizedBox(
     child: Drawer(
       child: Container(
-        color: kolor("#F2F5FB"),
+        color: kolor("#F0F1F0"),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
