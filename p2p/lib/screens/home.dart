@@ -13,7 +13,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    barkolor(); // Barkolor can be found in Utils Class , it makes color of status bar White
     return Scaffold(
       drawer: drawerNav(context), // navigation Drawer Widget in Widgets Library
       appBar: homeAppBar(context),

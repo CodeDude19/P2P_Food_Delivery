@@ -11,7 +11,6 @@ class Orders extends StatefulWidget {
 class _SearchState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return Scaffold(
       appBar: headerGeneral("Orders"),
       drawer: drawerNav(context),

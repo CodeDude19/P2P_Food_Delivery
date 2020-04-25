@@ -58,7 +58,6 @@ class _SearchState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return Scaffold(
       backgroundColor: kolor("#F0F1F0"),
       appBar: headerGeneral("Profile"),

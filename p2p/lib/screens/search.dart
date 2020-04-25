@@ -85,7 +85,6 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return Scaffold(
       backgroundColor: kolor("#F0F1F0"),
       drawer: drawerNav(context),

@@ -65,7 +65,6 @@ class _SearchState extends State<Account> {
 
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return Scaffold(
       backgroundColor: kolor("#F0F1F0"),
       appBar: headerGeneral("Account"),
@@ -120,7 +119,7 @@ class _SearchState extends State<Account> {
               children: <Widget>[
                 navRows(EvaIcons.personAddOutline, "Profile Details", context),
                 navRows(EvaIcons.pinOutline, "Address", context),
-                navRows(EvaIcons.npmOutline, "Payment", context),
+                navRows(EvaIcons.creditCardOutline, "Payment", context),
               ],
             ),
           )

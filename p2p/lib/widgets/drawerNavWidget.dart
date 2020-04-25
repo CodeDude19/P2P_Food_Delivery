@@ -92,7 +92,7 @@ drawerNav(BuildContext context) {
                 // Following Rows Display Text and Column
                 navRows(EvaIcons.homeOutline, "Home", context),
                 navRows(EvaIcons.heartOutline, "Favourites", context),
-                navRows(EvaIcons.bellOffOutline, "Orders", context),
+                navRows(EvaIcons.bellOutline, "Orders", context),
                 navRows(EvaIcons.personOutline, "Account", context),
               ],
             ),

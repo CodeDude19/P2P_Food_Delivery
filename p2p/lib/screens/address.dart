@@ -144,7 +144,6 @@ class _SearchState extends State<Address> {
 
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return Scaffold(
       backgroundColor: kolor("#E2E2E2"),
       appBar: headerGeneral("Address"),
