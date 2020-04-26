@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,13 @@ class _SearchState extends State<Cart> {
   itemCard(itemName, itemPrice) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
@@ -27,48 +29,54 @@ class _SearchState extends State<Cart> {
               imageUrl:
                   "https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1928&q=80",
               width: MediaQuery.of(context).size.width * 0.3,
-              height: MediaQuery.of(context).size.width * 0.25,
+              height: MediaQuery.of(context).size.width * 0.18,
               fit: BoxFit.cover,
             ),
           ),
           SizedBox(width: 10),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                itemName,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                softWrap: true,
+              Container(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Text(
+                  itemName,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
+                    padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.black.withOpacity(0.05)),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        IconButton(
-                            icon: Icon(
+                        GestureDetector(
+                            child: Icon(
                               EvaIcons.arrowCircleDownOutline,
-                              color: Colors.red,
+                              size: 20,
                             ),
-                            onPressed: () {}),
-                        SizedBox(width: 10),
+                            onTap: () {}),
+                        SizedBox(width: 5),
                         Text(
                           "x 3",
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(width: 10),
-                        IconButton(
-                          icon: Icon(
+                        SizedBox(width: 5),
+                        GestureDetector(
+                          child: Icon(
                             EvaIcons.arrowCircleUpOutline,
-                            color: Colors.green,
+                            size: 20,
                           ),
-                          onPressed: () {},
+                          onTap: () {},
                         ),
                       ],
                     ),
@@ -76,7 +84,7 @@ class _SearchState extends State<Cart> {
                   SizedBox(width: 10),
                   Text(
                     "\$ $itemPrice",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 17, color: Colors.blue),
                   ),
                 ],
               )
@@ -90,7 +98,7 @@ class _SearchState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kolor("F0F1F0"),
+      backgroundColor: kolor("e2e2e2"),
       appBar: headerGeneral("Cart"),
       drawer: drawerNav(context),
       body: Stack(
@@ -98,7 +106,7 @@ class _SearchState extends State<Cart> {
           ListView(
             padding: EdgeInsets.only(top: 10, bottom: 300, left: 10, right: 10),
             children: <Widget>[
-              itemCard("Margherita Pizza", 649),
+              itemCard("Margherita Pizza with Cheese", 649),
               itemCard("Burger", 127),
               itemCard("Pasta", 223),
               itemCard("Butterscotch", 367),
@@ -110,7 +118,18 @@ class _SearchState extends State<Cart> {
             children: <Widget>[
               SizedBox(),
               Container(
-                color: Colors.white,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(0, -5),
+                          blurRadius: 20,
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 10),
+                    ],
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20))),
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 20),
@@ -122,7 +141,7 @@ class _SearchState extends State<Cart> {
                           Text(
                             "TOTAL",
                             style: TextStyle(
-                                fontSize: 25,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: thatBlueColor()),
                             softWrap: true,
@@ -130,7 +149,7 @@ class _SearchState extends State<Cart> {
                           Text(
                             "\$ 1267",
                             style: TextStyle(
-                                fontSize: 25,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: thatBlueColor()),
                             softWrap: true,
@@ -140,9 +159,9 @@ class _SearchState extends State<Cart> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 30, right: 30, top: 20, bottom: 20),
+                          left: 20, right: 20, top: 10, bottom: 10),
                       child: FlatButton(
-                        padding: EdgeInsets.all(16),
+                        padding: EdgeInsets.all(8),
                         color: Colors.green,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
@@ -151,7 +170,7 @@ class _SearchState extends State<Cart> {
                           child: Text(
                             "Checkout",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 17,
                               color: Colors.white,
                             ),
                           ),

@@ -12,6 +12,7 @@ class Address extends StatefulWidget {
 class _SearchState extends State<Address> {
   TextEditingController addressName, address;
   bool showDialog = false;
+  bool loader = false;
   List<List<String>> addresses = [
     [
       "Address Name 1",
@@ -22,23 +23,22 @@ class _SearchState extends State<Address> {
 
   nameRows(x, controllerX) {
     return Container(
-      padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.05),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
         child: TextField(
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 16),
           controller: controllerX,
           cursorColor: Colors.black,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.go,
           decoration: InputDecoration(
             hintText: x,
-            hintStyle: TextStyle(fontSize: 20),
+            hintStyle: TextStyle(fontSize: 16),
             border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: 15),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10),
           ),
         ),
       ),
@@ -47,47 +47,51 @@ class _SearchState extends State<Address> {
 
   dialogView(BuildContext context) {
     return Container(
-      color: Colors.black.withOpacity(0.3),
+      color: Colors.black.withOpacity(0.6),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      child: Center(
-        child: Container(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.4,
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                nameRows("Address Name", addressName),
-                nameRows("Address", address),
-                Container(
-                  child: submitButton(),
-                  width: MediaQuery.of(context).size.width * 0.4,
-                )
-              ],
-            )),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: <Widget>[
+                  nameRows("Address Name", addressName),
+                  SizedBox(height: 10),
+                  nameRows("Address", address),
+                  SizedBox(height: 5),
+                  submitButton("Cancel", Colors.red),
+                  submitButton("Submit", Colors.green),
+                ],
+              )),
+        ],
       ),
     );
   }
 
-  submitButton() {
+  submitButton(name, MaterialColor color) {
     return FlatButton(
-      padding: EdgeInsets.all(16),
-      color: Colors.green,
+      padding: EdgeInsets.all(5),
+      color: color.withOpacity(0.1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       onPressed: () {
         setState(() {
           showDialog = false;
+          // loader = true;
         });
       },
       child: Center(
         child: Text(
-          "Submit",
+          name,
           style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: color,
           ),
         ),
       ),
@@ -96,46 +100,58 @@ class _SearchState extends State<Address> {
 
   addressCard(x, y) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.only(bottom: 10),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             x,
             textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 5),
+          Divider(
+            height: 10,
+            thickness: 2,
+            color: kolor("F0F1F0"),
+          ),
+          SizedBox(height: 5),
           Text(
             y,
             textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 17),
+            style: TextStyle(fontSize: 15),
           ),
           SizedBox(height: 10),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.3,
-            child: FlatButton(
-              padding: EdgeInsets.all(5),
-              color: Colors.pink.withOpacity(0.1),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)),
-              onPressed: () {},
-              child: Center(
-                child: Text(
-                  "Delete",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.pink,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              FlatButton(
+                padding: EdgeInsets.all(5),
+                color: Colors.red.withOpacity(0.1),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                onPressed: () {},
+                child: Center(
+                  child: Text(
+                    "Delete",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           )
         ],
       ),
@@ -152,17 +168,17 @@ class _SearchState extends State<Address> {
         children: <Widget>[
           ListView(
             padding: EdgeInsets.only(
-              top: 20,
+              top: 10,
               bottom: 100,
-              left: 16,
-              right: 16,
+              left: 10,
+              right: 10,
             ),
             children: <Widget>[
               addressCard(addresses[0][0], addresses[0][1]),
               addressCard(addresses[1][0], addresses[1][1]),
             ],
           ),
-          // loading(context)
+          loader ? loading(context) : Text(""),
           showDialog ? dialogView(context) : Text(""),
         ],
       ),
@@ -178,6 +194,7 @@ class _SearchState extends State<Address> {
           onPressed: () {
             setState(() {
               showDialog = true;
+              loader = false;
             });
           },
         ),
