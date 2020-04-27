@@ -31,7 +31,7 @@ navRows(x, y, context) {
       st = Favourites();
       break;
     case "Orders":
-      st = Cart();
+      st = Orders();
       break;
     case "Account":
       st = Account();
