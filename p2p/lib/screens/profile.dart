@@ -17,7 +17,7 @@ class _SearchState extends State<Profile> {
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
         child: TextField(
@@ -27,7 +27,7 @@ class _SearchState extends State<Profile> {
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.go,
           decoration: InputDecoration(
-            labelText: x,
+            hintText: x,
             hasFloatingPlaceholder: true,
             hintStyle: TextStyle(fontSize: 20),
             border: InputBorder.none,
@@ -39,17 +39,22 @@ class _SearchState extends State<Profile> {
   }
 
   updateButton() {
-    return FlatButton(
-      padding: EdgeInsets.all(16),
-      color: Colors.pink,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-      onPressed: () {},
-      child: Center(
-        child: Text(
-          "Update",
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50), color: Colors.white),
+      child: FlatButton(
+        padding: EdgeInsets.all(16),
+        color: Colors.red.withOpacity(0.1),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        onPressed: () {},
+        child: Center(
+          child: Text(
+            "Update",
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -59,7 +64,7 @@ class _SearchState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kolor("#F0F1F0"),
+      backgroundColor: kolor("#e1e2e1"),
       appBar: headerGeneral("Profile"),
       drawer: drawerNav(context),
       body: ListView(

@@ -65,8 +65,7 @@ class _SearchState extends State<Search> {
         return Container(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-              color: kolor(kolors[index]),
-              borderRadius: BorderRadius.circular(20)),
+              color: Colors.white, borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: Text(
               categories[index],
@@ -74,7 +73,7 @@ class _SearchState extends State<Search> {
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontSize: 30,
-                  color: Colors.black54,
+                  color: kolor(kolors[index]),
                   fontWeight: FontWeight.w900),
             ),
           ),
@@ -86,7 +85,7 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kolor("#F0F1F0"),
+      backgroundColor: kolor("#e1e2e1"),
       drawer: drawerNav(context),
       appBar: headerGeneral("What to eat?"),
       body: ListView(

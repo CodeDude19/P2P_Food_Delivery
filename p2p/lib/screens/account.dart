@@ -66,7 +66,7 @@ class _SearchState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kolor("#F0F1F0"),
+      backgroundColor: kolor("#E1E2E1"),
       appBar: headerGeneral("Account"),
       drawer: drawerNav(context),
       body: ListView(

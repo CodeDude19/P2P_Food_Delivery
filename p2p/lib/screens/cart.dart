@@ -98,7 +98,7 @@ class _SearchState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kolor("e2e2e2"),
+      backgroundColor: kolor("e1e2e1"),
       appBar: headerGeneral("Cart"),
       drawer: drawerNav(context),
       body: Stack(
