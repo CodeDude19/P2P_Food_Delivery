@@ -12,7 +12,7 @@ headerGeneral(x) {
       style: TextStyle(
         fontWeight: FontWeight.w300,
         fontSize: 25,
-        color: kolor("#283060"),
+        color: thatBlueColor(),
       ),
     ),
     iconTheme: new IconThemeData(

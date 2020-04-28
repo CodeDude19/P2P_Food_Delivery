@@ -3,6 +3,9 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatefulWidget {
+  final String name, imageUrl, price, rating, producer;
+  ProductDetail(
+      {this.name, this.imageUrl, this.price, this.producer, this.rating});
   @override
   _ProductDetailState createState() => _ProductDetailState();
 }
@@ -73,21 +76,39 @@ class _ProductDetailState extends State<ProductDetail> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.4,
                 fit: BoxFit.cover,
-                imageUrl:
-                    "https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1928&q=80",
+                imageUrl: widget.imageUrl,
               ),
               SizedBox(height: 20),
-              namePrice("Burger", "200"),
+              namePrice(widget.name, widget.price),
               SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      "Usha Chauhan",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          widget.producer,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 17),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              widget.rating,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            SizedBox(width: 10),
+                            Icon(
+                              EvaIcons.star,
+                              color: Colors.amber,
+                            )
+                          ],
+                        )
+                      ],
                     ),
                     SizedBox(height: 20),
                     Text(

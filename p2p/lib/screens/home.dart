@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:p2p/screens/productDetail.dart';
 import 'package:p2p/utils/utils.dart';
+import 'package:p2p/widgets/column_builder.dart';
 import 'package:p2p/widgets/drawerNavWidget.dart';
 import 'package:p2p/widgets/headerHome.dart';
 
@@ -11,10 +14,54 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<int> nos = [0, 1, 2];
   List<String> carouselData = [
     "10% discount on your First Order!",
     "Exclusive deals on Plaform Launch!",
     "Find your Favourite Home Chef Now!"
+  ];
+  List<String> links = [
+    "https://github.com/CodeDude19/P2P_Food_Delivery/blob/master/p2p/assets/images/food_delivery.png?raw=true",
+    "https://github.com/CodeDude19/P2P_Food_Delivery/blob/master/p2p/assets/images/exclusive.png?raw=true",
+    "https://github.com/CodeDude19/P2P_Food_Delivery/blob/master/p2p/assets/images/chef.png?raw=true",
+  ];
+
+  List<List<String>> foodItems = [
+    [
+      "Special Maggi",
+      "Usha Chauhan",
+      "4.7",
+      "200",
+      "https://m.media-amazon.com/images/S/aplus-media/vc/139791f0-ce66-4154-9893-9aee9754331c._CR0,0,626,626_PT0_SX300__.jpg"
+    ],
+    [
+      "Fish Curry",
+      "Richa Chakraborty",
+      "4.1",
+      "350",
+      "https://www.whiskaffair.com/wp-content/uploads/2018/05/Kerala-Fish-Curry-1.jpg"
+    ],
+    [
+      "Chicken Curry",
+      "Meghna Das",
+      "3.9",
+      "300",
+      "https://www.seriouseats.com/recipes/images/2011/12/20111227-indian-curry-610.jpg"
+    ],
+    [
+      "Dal Rice",
+      "Richa Chakraborty",
+      "4.6",
+      "170",
+      "https://40aprons.com/wp-content/uploads/2019/08/instant-pot-dal-6-500x500.jpg"
+    ],
+    [
+      "Gulab Zamun",
+      "Komal Das",
+      "4.9",
+      "90",
+      "https://smedia2.intoday.in/aajtak/images/stories/102015/gulam-jamun-pakwangali_520_102815120718.jpg"
+    ],
   ];
 
   thatCarousel() {
@@ -22,7 +69,7 @@ class _HomeState extends State<Home> {
       aspectRatio: 16 / 9,
       initialPage: 0,
       height: MediaQuery.of(context).size.height * 0.25,
-      items: carouselData.map((i) {
+      items: nos.map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
@@ -38,15 +85,14 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   Expanded(
                     child: Text(
-                      i,
+                      carouselData[i],
                       style: TextStyle(fontSize: 20, color: Colors.black),
                       textAlign: TextAlign.left,
                       softWrap: true,
                     ),
                   ),
                   CachedNetworkImage(
-                    imageUrl:
-                        "https://github.com/CodeDude19/P2P_Food_Delivery/blob/master/p2p/assets/images/food_delivery.png?raw=true",
+                    imageUrl: links[i],
                     fit: BoxFit.cover,
                   )
                 ],
@@ -55,6 +101,56 @@ class _HomeState extends State<Home> {
           },
         );
       }).toList(),
+    );
+  }
+
+  mealCard(name, producer, rating, price, image) {
+    return Container(
+      margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return ProductDetail(
+              name: name,
+              imageUrl: image,
+              price: price,
+              rating: rating,
+              producer: producer,
+            );
+          }));
+        },
+        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+        isThreeLine: true,
+        leading: CachedNetworkImage(
+          imageUrl: image,
+          fit: BoxFit.cover,
+        ),
+        title: Text(name, style: TextStyle(fontSize: 17)),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(producer),
+            Row(
+              children: <Widget>[
+                Text(rating),
+                SizedBox(width: 10),
+                Icon(
+                  EvaIcons.star,
+                  color: Colors.amber,
+                )
+              ],
+            )
+          ],
+        ),
+        trailing: Text(
+          "\$ $price",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+        ),
+      ),
     );
   }
 
@@ -68,6 +164,32 @@ class _HomeState extends State<Home> {
         padding: EdgeInsets.only(top: 10, bottom: 100),
         children: <Widget>[
           thatCarousel(),
+          Container(
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+            child: Text(
+              "Choose your Meal",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          Divider(
+            indent: 10,
+            endIndent: MediaQuery.of(context).size.width * 0.4,
+            color: Colors.black38,
+            thickness: 1,
+          ),
+          ColumnBuilder(
+              itemBuilder: (context, index) {
+                return mealCard(
+                    foodItems[index][0],
+                    foodItems[index][1],
+                    foodItems[index][2],
+                    foodItems[index][3],
+                    foodItems[index][4]);
+              },
+              itemCount: foodItems.length)
         ],
       ),
     );
