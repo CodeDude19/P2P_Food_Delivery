@@ -62,6 +62,7 @@ class _SearchState extends State<Cart> {
                             child: Icon(
                               EvaIcons.arrowCircleDownOutline,
                               size: 20,
+                              color: Colors.red,
                             ),
                             onTap: () {}),
                         SizedBox(width: 5),
@@ -75,6 +76,7 @@ class _SearchState extends State<Cart> {
                           child: Icon(
                             EvaIcons.arrowCircleUpOutline,
                             size: 20,
+                            color: Colors.green,
                           ),
                           onTap: () {},
                         ),
