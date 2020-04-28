@@ -12,7 +12,8 @@ Color kolor(String hexColor) {
 }
 
 thatBlueColor() {
-  return kolor("#282860");
+  // return kolor("#282860");
+  return Colors.black;
 }
 
 barkolor() {

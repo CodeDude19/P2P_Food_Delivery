@@ -18,7 +18,7 @@ homeAppBar(BuildContext context) {
       "Ghar se Ghar Tak",
       style: TextStyle(
         fontWeight: FontWeight.bold,
-        color: kolor("#283060"),
+        color: thatBlueColor(),
       ),
     ),
     actions: <Widget>[

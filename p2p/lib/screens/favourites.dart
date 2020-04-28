@@ -79,7 +79,6 @@ class _SearchState extends State<Favourites> {
 
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return Scaffold(
       backgroundColor: kolor("e1e2e1"),
       appBar: headerGeneral("Favourites"),

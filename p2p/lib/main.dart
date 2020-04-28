@@ -7,7 +7,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    barkolor();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

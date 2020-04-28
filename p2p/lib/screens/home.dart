@@ -12,10 +12,51 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<String> carouselData = [
-    "10% discount on First Order!",
-    "Get Exclusive deals on Plaform Launch!",
-    "\" Welcome to Ghar se Ghar Tak \"!"
+    "10% discount on your First Order!",
+    "Exclusive deals on Plaform Launch!",
+    "Find your Favourite Home Chef Now!"
   ];
+
+  thatCarousel() {
+    return CarouselSlider(
+      aspectRatio: 16 / 9,
+      initialPage: 0,
+      height: MediaQuery.of(context).size.height * 0.25,
+      items: carouselData.map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+              padding:
+                  EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+              margin: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      i,
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.left,
+                      softWrap: true,
+                    ),
+                  ),
+                  CachedNetworkImage(
+                    imageUrl:
+                        "https://github.com/CodeDude19/P2P_Food_Delivery/blob/master/p2p/assets/images/food_delivery.png?raw=true",
+                    fit: BoxFit.cover,
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      }).toList(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,32 +67,7 @@ class _HomeState extends State<Home> {
       body: ListView(
         padding: EdgeInsets.only(top: 10, bottom: 100),
         children: <Widget>[
-          CarouselSlider(
-            enlargeCenterPage: true,
-            aspectRatio: 16 / 9,
-            initialPage: 0,
-            height: MediaQuery.of(context).size.height * 0.25,
-            items: carouselData.map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    padding: EdgeInsets.all(20),
-                    margin: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      i,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                      textAlign: TextAlign.left,
-                      softWrap: true,
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          )
+          thatCarousel(),
         ],
       ),
     );
