@@ -11,7 +11,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // Appbar
+  List<String> carouselData = [
+    "10% discount on First Order!",
+    "Get Exclusive deals on Plaform Launch!",
+    "\" Welcome to Ghar se Ghar Tak \"!"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +24,34 @@ class _HomeState extends State<Home> {
       drawer: drawerNav(context), // navigation Drawer Widget in Widgets Library
       appBar: homeAppBar(context),
       body: ListView(
+        padding: EdgeInsets.only(top: 10, bottom: 100),
         children: <Widget>[
-          // CarouselSlider(
-          //   enlargeCenterPage: true,
-          //   aspectRatio: 16 / 9,
-          //   initialPage: 0,
-          //   height: MediaQuery.of(context).size.height * 0.3,
-          //   items: urls.map((i) {
-          //     return Builder(
-          //       builder: (BuildContext context) {
-          //         return;
-          //       },
-          //     );
-          //   }).toList(),
-          // )
+          CarouselSlider(
+            enlargeCenterPage: true,
+            aspectRatio: 16 / 9,
+            initialPage: 0,
+            height: MediaQuery.of(context).size.height * 0.25,
+            items: carouselData.map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      i,
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.left,
+                      softWrap: true,
+                    ),
+                  );
+                },
+              );
+            }).toList(),
+          )
         ],
       ),
     );
