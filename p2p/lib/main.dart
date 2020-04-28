@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p2p/screens/home.dart';
+import 'package:p2p/utils/utils.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +10,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'varela'),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'varela',
+      ),
       home: Home(),
     );
   }

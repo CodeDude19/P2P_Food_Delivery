@@ -18,7 +18,8 @@ thatBlueColor() {
 
 barkolor() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-    statusBarColor: Colors.white, //or set color with: Color(0xFF0000FF)
+    statusBarColor: Colors.white,
+    statusBarIconBrightness: Brightness.dark,
   ));
 }
 

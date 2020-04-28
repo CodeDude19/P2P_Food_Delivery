@@ -6,6 +6,7 @@ import 'package:p2p/utils/utils.dart';
 
 homeAppBar(BuildContext context) {
   return AppBar(
+    brightness: Brightness.light,
     elevation: 0,
     titleSpacing: 0,
     // centerTitle: true,
