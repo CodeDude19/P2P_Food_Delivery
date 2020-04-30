@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:p2p/screens/order_status.dart';
 import 'package:p2p/utils/utils.dart';
 import 'package:p2p/widgets/column_builder.dart';
 import 'package:p2p/widgets/drawerNavWidget.dart';
@@ -35,6 +36,11 @@ class _SearchState extends State<Orders> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OrderStatus();
+          }));
+        },
         dense: true,
         contentPadding: EdgeInsets.all(0),
         leading: ClipRRect(
@@ -80,18 +86,34 @@ class _SearchState extends State<Orders> {
       body: ListView(
         padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 100),
         children: <Widget>[
+          // Container(
+          //   padding: EdgeInsets.all(10),
+          //   decoration: BoxDecoration(
+          //     color: kolor("#95a5a6").withOpacity(0.8),
+          //     borderRadius: BorderRadius.circular(10),
+          //   ),
+          //   child: Text(
+          //     "On Going",
+          //     style: TextStyle(fontSize: 30, color: Colors.white),
+          //   ),
+          // ),
+          // SizedBox(height: 15),
           Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: kolor("#95a5a6").withOpacity(0.8),
-              borderRadius: BorderRadius.circular(10),
-            ),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10),
             child: Text(
-              "On Going",
-              style: TextStyle(fontSize: 30, color: Colors.white),
+              "Ongoing ",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(height: 15),
+          Divider(
+            indent: 10,
+            endIndent: MediaQuery.of(context).size.width * 0.4,
+            color: Colors.black38,
+            thickness: 1,
+          ),
           ColumnBuilder(
             itemBuilder: (context, index) {
               return orderCard(
@@ -100,18 +122,34 @@ class _SearchState extends State<Orders> {
             itemCount: _onGoing.length,
           ),
           SizedBox(height: 10),
+          // Container(
+          //   padding: EdgeInsets.all(10),
+          //   decoration: BoxDecoration(
+          //     color: kolor("#95a5a6").withOpacity(0.8),
+          //     borderRadius: BorderRadius.circular(10),
+          //   ),
+          //   child: Text(
+          //     "Previous",
+          //     style: TextStyle(fontSize: 30, color: Colors.white),
+          //   ),
+          // ),
+          // SizedBox(height: 15),
           Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: kolor("#95a5a6").withOpacity(0.8),
-              borderRadius: BorderRadius.circular(10),
-            ),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10),
             child: Text(
               "Previous",
-              style: TextStyle(fontSize: 30, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(height: 15),
+          Divider(
+            indent: 10,
+            endIndent: MediaQuery.of(context).size.width * 0.4,
+            color: Colors.black38,
+            thickness: 1,
+          ),
           ColumnBuilder(
             itemBuilder: (context, index) {
               return orderCard(_previous[index][1], _previous[index][2],
