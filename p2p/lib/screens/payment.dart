@@ -15,7 +15,7 @@ class _PaymentState extends State<Payment> {
     lineWidth: 2,
     size: 30,
   );
-  Widget widget2 = Text("Loading", style: TextStyle(fontSize: 15));
+  Widget widget2 = Text("Placing Order..", style: TextStyle(fontSize: 15));
   bool back = false;
 
   @override
