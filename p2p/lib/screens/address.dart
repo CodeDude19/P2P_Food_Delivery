@@ -11,7 +11,7 @@ class Address extends StatefulWidget {
 
 class _SearchState extends State<Address> {
   TextEditingController addressName, address;
-  bool showDialog = false;
+  bool showDialogVal = false;
   bool loader = false;
   List<List<String>> addresses = [
     [
@@ -43,6 +43,30 @@ class _SearchState extends State<Address> {
         ),
       ),
     );
+  }
+
+  deleteAddress() {
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              actions: <Widget>[
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("NO")),
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("YES")),
+              ],
+              title: Text("Delete this Address?"),
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+        barrierDismissible: false);
   }
 
   dialogView(BuildContext context) {
@@ -81,7 +105,7 @@ class _SearchState extends State<Address> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       onPressed: () {
         setState(() {
-          showDialog = false;
+          showDialogVal = false;
           // loader = true;
         });
       },
@@ -139,7 +163,9 @@ class _SearchState extends State<Address> {
                 color: Colors.red.withOpacity(0.1),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)),
-                onPressed: () {},
+                onPressed: () {
+                  deleteAddress();
+                },
                 child: Center(
                   child: Text(
                     "Delete",
@@ -179,7 +205,7 @@ class _SearchState extends State<Address> {
             ],
           ),
           loader ? loading(context) : Text(""),
-          showDialog ? dialogView(context) : Text(""),
+          showDialogVal ? dialogView(context) : Text(""),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -193,7 +219,7 @@ class _SearchState extends State<Address> {
           ),
           onPressed: () {
             setState(() {
-              showDialog = true;
+              showDialogVal = true;
               loader = false;
             });
           },
