@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:p2p/screens/cart.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -12,6 +13,8 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+  double rating = 1;
+
   @override
   Widget build(BuildContext context) {
     backAndCart() {
@@ -171,18 +174,12 @@ class _ProductDetailState extends State<ProductDetail> {
                               borderRadius: BorderRadius.circular(7),
                             ),
                             padding: EdgeInsets.all(10),
-                            onPressed: () {
-                              // Add logic Function Here
-                              final snackBar = SnackBar(
-                                  content: Text(
-                                'Chef Added to Favourites!',
-                                style: TextStyle(fontFamily: 'varela'),
-                              ));
-
-                              Scaffold.of(context).showSnackBar(snackBar);
+                            onPressed: () async {
+                              // this fuction is async coz : show the snackbar after rating is added to firebase
+                              _settingModalBottomSheet(context);
                             },
                             child: Text(
-                              "Favourite Chef",
+                              "Rate Product",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -203,5 +200,70 @@ class _ProductDetailState extends State<ProductDetail> {
         }),
       ),
     );
+  }
+
+  void _settingModalBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Container(
+              padding: EdgeInsets.all(20),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    "Rating : $rating",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Slider(
+                    divisions: 4,
+                    value: rating,
+                    onChanged: (val) {
+                      setState(() {
+                        rating = val;
+                      });
+                    },
+                    min: 1,
+                    max: 5,
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: FlatButton(
+                          padding: EdgeInsets.all(10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          onPressed: () {
+                            // Fluttertoast.showToast(msg: "Rating Submitted!");
+                            // logic code
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            "Submit Rating",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          });
+        });
   }
 }

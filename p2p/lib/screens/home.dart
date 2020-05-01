@@ -14,6 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool lowTohigh = true;
   List<int> nos = [0, 1, 2];
   List<String> carouselData = [
     "10% discount on your First Order!",
@@ -164,19 +165,33 @@ class _HomeState extends State<Home> {
         padding: EdgeInsets.only(top: 10, bottom: 100),
         children: <Widget>[
           thatCarousel(),
-          Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-            child: Text(
-              "Choose your Meal",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: Text(
+                  "Choose your Meal",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              IconButton(
+                  alignment: Alignment.bottomCenter,
+                  icon: Icon(
+                    EvaIcons.menu2Outline,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    _settingModalBottomSheet(context);
+                  }),
+            ],
           ),
           Divider(
             indent: 10,
-            endIndent: MediaQuery.of(context).size.width * 0.4,
+            endIndent: 10,
             color: Colors.black38,
             thickness: 1,
           ),
@@ -193,5 +208,53 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
+  }
+
+  void _settingModalBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+            padding: EdgeInsets.all(20),
+            child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                GestureDetector(
+                  child: Text(
+                    "Price Low to High",
+                    style: TextStyle(
+                        color: lowTohigh == true ? Colors.green : Colors.black,
+                        fontSize: 20),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      lowTohigh = true;
+                      Navigator.of(context).pop();
+                    });
+                  },
+                ),
+                Divider(
+                  color: Colors.black45,
+                  height: 40,
+                ),
+                GestureDetector(
+                  child: Text(
+                    "Price High to Low",
+                    style: TextStyle(
+                        color: lowTohigh == true ? Colors.black : Colors.green,
+                        fontSize: 20),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      lowTohigh = false;
+                      Navigator.of(context).pop();
+                    });
+                  },
+                )
+              ],
+            ),
+          );
+        });
   }
 }
